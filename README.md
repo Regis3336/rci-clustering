@@ -12,8 +12,6 @@
     width="850"
     alt="Spectral RCI analysis on a sphere: embedding, labels, Morse profiles and curvature signatures"
   >
-  <br>
-  <em>Figure 1: RCI analysis on a sphere. Top row: Raw data, Spectral Embedding, and Final Clustering. Bottom row: The Morse complexity profile $M_c(k)$ and the discrete curvature signature $\Delta^2 M_c(k)$ detecting the geometric transition.</em>
 </p>
 
 ---
