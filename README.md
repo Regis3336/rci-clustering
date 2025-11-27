@@ -98,6 +98,12 @@ pip install -r requirements.txt
 
 ---
 
+## 🚀 Quick Start
+
+To see RCI running immediately (spectral mode demo included), just run:
+
+python -m rci.core
+
 ## 🔬 Reproducibility & Validation This repository provides the full suite required to reproduce all experiments and mathematical validations presented in the paper. 
 
 ### 1. Structural Homology Validation (Appendix C) We offer a computational verification of the sheaf-theoretic foundations of RCI.
