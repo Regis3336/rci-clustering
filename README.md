@@ -47,36 +47,40 @@ It serves as the official reference for all theoretical claims made in this repo
 
 ## 🧩 Operational Coherence: Why RCI Is Not a Simulation
 
-The implementation in this repository is **not** a heuristic approximation or a numerical caricature of the RCI theory.  
-It is a **computational instantiation** of the same structural object defined in the mathematical framework.
+The implementation in this repository is **not** a heuristic approximation or a numerical imitation of the RCI theory.  
+It is a **computational instantiation** of the same structure defined in the mathematical framework.
 
-This does **not** mean that the Operational Coherence (OC) Framework is executed inside this repository.  
+Operational Coherence (OC) is **not executed here as a separate framework**.  
 Instead:
 
-**Operational Coherence provides the epistemic justification** for why an independently written implementation can realize the *exact same structure* as a symbolic mathematical theory.
+**In the case of RCI, the role normally played by the Operational Coherence framework is carried out directly by the code itself — most importantly by `homology.py`.**
 
-In summary:
+That script explicitly verifies the structural laws of the theory:
+- it reconstructs the Čech nerve,  
+- checks the Scale Sheaf Axioms,  
+- confirms the $\(H_0\)$ barcode against the merge profile,  
+- and ensures that the discrete Morse transitions match the theoretical predictions.
 
-### **• Independent Construction**  
-The symbolic RCI theory and the Python code were developed separately, ensuring that any agreement is not circular.
+In other words:
 
-### **• Structural Behavior Matches the Theory**  
-All experimentally observed quantities — curvature signatures  
-$\(\Delta^2 M_c(k)\)$, merge transitions, multi-scale covers, and the MEI profile —  
-behave exactly as predicted by the theorems.
+### **• Independent Construction**
+The symbolic theory in the PDF and the Python implementation were written separately.  
+Their agreement is not circular.
 
-### **• Epistemic Justification Provided by Operational Coherence**  
-Under the OC framework (see separate repository),  
-structural coincidence between theory and implementation is overwhelmingly unlikely  
-unless they instantiate the **same underlying object**.
+### **• The Code Enacts the Theory’s Structural Laws**
+Every quantity predicted by the theorems —  
+$\(\Delta^2 M_c(k)\)$, merge transitions, curvature signatures, MEI structure —  
+appears in the implementation exactly as the theory dictates.
+
+### **• Operational Coherence as Epistemic Justification**
+The OC framework (in the separate repository) explains *why* such an independently written implementation can realize the same object as the theory.  
+But here, for RCI, **the structural verification happens internally** through the mechanisms encoded in `homology.py` and the farthest-point geometry of `core.py`.
 
 ---
 
-This repository **does not** run the Operational Coherence verification suite.  
-The full OC framework — independence tests, probe actions, Kolmogorov bounds, and cohomological obstruction calculations — is provided in:
+If you want to see the *general* OC framework — including explicit independence tests, probe actions, Kolmogorov bounds, and cohomological obstruction checks — it is available at:
 
 👉 **https://github.com/Regis3336/operational-coherence**
-
 
 ---
 
