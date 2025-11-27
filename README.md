@@ -31,7 +31,7 @@ The algorithm requires only a single operational scale parameter, $r$. All remai
 Clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/rci-clustering.git
+git clone https://github.com/Regis3336/rci-clustering.git
 cd rci-clustering
 pip install -r requirements.txt
 ```
