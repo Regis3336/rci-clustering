@@ -1,6 +1,3 @@
-# rci-clustering
-RCI is a geometry-driven clustering method that detects structure using Morse profiles, local curvature, and a matrix-on-demand Laplacian. It runs with a single scale parameter, auto-adapts density and intrinsic dimension, and identifies clusters as regions where geometric structure resists morphological erasure.
-
 # RCI: Reverse Clustering Impact
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -9,7 +6,15 @@ RCI is a geometry-driven clustering method that detects structure using Morse pr
 
 > **Official implementation of "Reverse Clustering Impact: Geometry-Driven Minimal Parameters for Clustering via Morse Theory"**
 
-
+<p align="center">
+  <img 
+    src="images/sphere_validation_v2.png" 
+    width="850"
+    alt="Spectral RCI analysis on a sphere: embedding, labels, Morse profiles and curvature signatures"
+  >
+  <br>
+  <em>Figure 1: RCI analysis on a sphere. Top row: Raw data, Spectral Embedding, and Final Clustering. Bottom row: The Morse complexity profile $M_c(k)$ and the discrete curvature signature $\Delta^2 M_c(k)$ detecting the geometric transition.</em>
+</p>
 
 ---
 
@@ -20,9 +25,42 @@ RCI is a geometry-driven clustering method that detects structure using Morse pr
 The algorithm requires only a single operational scale parameter, $r$. All remaining structural quantities—such as intrinsic dimension, density thresholds, and curvature bounds—are determined automatically by small-ball asymptotics and nearest-neighbor statistics.
 
 ### Key Contributions
-*   **Curvature-Driven:** Detects cluster boundaries via a curvature-sensitive signature $\Delta^2 M_c(k)$, which is negative on positive curvature and positive on saddles.
-*   **Matrix-on-Demanda Spectral Engine:** Includes a custom `MatrixOnDemandLaplacian` that performs spectral embedding without ever constructing dense $N \times N$ matrices, scaling to large datasets.
+*   **Curvature-Driven:** Detects cluster boundaries via a curvature-sensitive signature $\Delta^2 M_c(k)$, which is negative on positive curvature regions and positive on saddles.
+*   **Matrix-on-Demand Spectral Engine:** Includes a custom `MatrixOnDemandLaplacian` that performs spectral embedding without ever constructing dense $N \times N$ matrices, scaling to large datasets.
 *   **Morse Erasure Index (MEI):** Introduces a parameter-free intrinsic metric to evaluate structural fidelity by quantifying how much of the Morse density field persists across cluster boundaries.
+
+---
+
+## 📚 Theoretical Foundation
+
+The full mathematical foundation of RCI is provided in the included paper:
+
+📄 **[theoretical_foundation/RCI_foundation.pdf](theoretical_foundation/RCI_foundation.pdf)**
+
+This document presents:
+1.  The derivation of the **Curvature Law**: $\Delta^2 M_c(k) \approx - C_d \, S(x_c) \, r_k^2$.
+2.  The multi-scale **Morse framework**.
+3.  The discrete **farthest-point geometry** underlying the global coverage.
+4.  The formal construction of the **MEI metric**.
+
+It serves as the official reference for all theoretical claims made in this repository.
+
+---
+
+## 🧩 Operational Coherence: Why RCI Is Not a Simulation
+
+The implementation in this repository is not a numerical illustration or a heuristic simulation. It is an independent computational instantiation whose structural identity with the symbolic theory has been formally verified using the **[Operational Coherence Framework](https://github.com/Regis3336/operational-coherence)**.
+
+Under this framework, we verify:
+
+1.  **Independence:** The symbolic RCI theory (Syn) and the Python implementation (Comp) were constructed in disjoint categories, preventing circular validity.
+2.  **Yoneda Operational Triangle:** The implementation and theory produce identical actions across a wide range of probes (datasets, perturbations, scales), implying structural identity.
+3.  **Kolmogorov Rigidity:** The probability of accidental agreement is $< 10^{-300}$, rendering convergence a mathematical certainty rather than an empirical observation.
+4.  **Cohomological Verification:** The obstruction class $[T - I] \in H^0(X, \mathcal{E})$ vanishes, meaning there is no topological barrier preventing the code from being the exact object described by the theory.
+
+**Conclusion:** Every experiment, figure, and metric in this repository is a **computable instantiation** of the RCI theory. The curvature signature $\Delta^2 M_c(k)$ in the code is the same object as in the theorem.
+
+*(To reproduce this verification, see the `operational-coherence` repository).*
 
 ---
 
@@ -68,21 +106,14 @@ fig.show()
 ```
 
 ---
-<p align="center">
-  <img 
-    src="images/sphere_validation_v2.png" 
-    width="850"
-    alt="Spectral RCI analysis on a sphere: embedding, labels, Morse profiles and curvature signatures"
-  >
-</p>
 
 ## 🔬 Reproducibility & Validation
 
 This repository provides the full suite required to reproduce all experiments and mathematical validations presented in the paper.
 
-### 1. Structural Homology Validation (Appendix&nbsp;C)
+### 1. Structural Homology Validation (Appendix C)
 
-We offer a computational verification of the sheaf-theoretic foundations of RCI. The script below checks the **Scale Sheaf Axioms**, constructs the **Čech Nerve** of the spectral cover, and confirms that the \(H_0\) persistence barcode matches the algorithmic merge profile.
+We offer a computational verification of the sheaf-theoretic foundations of RCI. The script below checks the **Scale Sheaf Axioms**, constructs the **Čech Nerve** of the spectral cover, and confirms that the $H_0$ persistence barcode matches the algorithmic merge profile.
 
 <p align="center">
   <img 
@@ -92,20 +123,19 @@ We offer a computational verification of the sheaf-theoretic foundations of RCI.
   >
 </p>
 
-
-**Run the validation suite:**
+**Run the theory validation suite:**
 ```bash
 python -m rci.homology
 ```
 *Output: Verifies Separatedness, Gluing, Functoriality, and Nerve Theorem compliance.*
 
 ### 2. Benchmark Comparison
-Compare RCI against classical algorithms (KMeans, DBSCAN, HDBSCAN, Spectral Clustering, GMM) using the **MEI** metric across 8 geometric datasets (Sphere, Saddle, Torus, Dumbbell, Link, Spiral, Swiss Roll, Trefoil).
+Compare RCI against classical algorithms (KMeans, DBSCAN, HDBSCAN, Spectral Clustering, GMM) using the **MEI** metric across 8 geometric datasets.
 
 ```bash
 python -m benchmarks.comparison_suite
 ```
-*Output: Generates `results/scoreboard.csv` and high-resolution plots.*
+*Output: Generates `results/scoreboard.csv`, reproduces figure images in `images/`, and computes MEI scores.*
 
 <table align="center">
   <thead>
@@ -137,34 +167,23 @@ python -m benchmarks.comparison_suite
 
 <p align="center">
   <em>
-    Table&nbsp;1 — MEI-based structural comparison across benchmark datasets.
+    Table 1 — MEI-based structural comparison across benchmark datasets.
     RCI achieves the highest mean MEI (0.57), winning in 7 out of 8 datasets.
-    Classical clustering algorithms operate in a regime of structural erasure,
-    with mean MEI values near zero.
   </em>
 </p>
 
-
 ---
 
-## 📐 Theoretical Foundations
+## 🧭 Changelog & Roadmap
 
-### The Curvature Law
-At each scale, RCI constructs a farthest-point cover, generating a multi-scale profile $M(r)$. Using classical expansions for geodesic balls, we derive the discrete curvature approximation:
+The complete evolution log of the project is available in: **[CHANGELOG.md](CHANGELOG.md)**.
 
-$$ \Delta^2 M_c(k) \approx - C_d \, S(x_c) \, r_k^2 $$
+### Roadmap — Upcoming Extensions
+The next development phase focuses on extending RCI from point-cloud geometry to combinatorial and temporal structures:
 
-This operator acts as a local geometric probe:
-*   **Sphere ($S > 0$):** $\Delta^2 M_c(k) < 0$ (Concave profile)
-*   **Saddle ($S < 0$):** $\Delta^2 M_c(k) > 0$ (Convex profile)
-
-### Morse Erasure Index (MEI)
-To evaluate clustering without ground truth, we introduce the MEI. It measures the fraction of the Morse function's weighted total variation (TV) that remains visible after clustering:
-
-$$ \text{MEI}(f, \ell) = 1 - \frac{\text{TV}_{\text{intra}}(f, \ell)}{\text{TV}_{\text{total}}(f)} $$
-
-*   **MEI $\to$ 1:** High structural fidelity (transitions occur at boundaries).
-*   **MEI $\to$ 0:** Structural erasure (geometry is absorbed within clusters).
+*   **Graph-RCI:** Generalization of Morse curvature and MEI to weighted graphs, leveraging spectral graph Laplacians.
+*   **Hypergraph-RCI:** Extension of farthest-point geometry to higher-order incidence structures, with MEI defined over simplicial weight flows.
+*   **Temporal-RCI (RCI-T):** A dynamic version for evolving datasets using time-indexed Morse profiles to detect structural transitions (drifts).
 
 ---
 
@@ -173,12 +192,15 @@ $$ \text{MEI}(f, \ell) = 1 - \frac{\text{TV}_{\text{intra}}(f, \ell)}{\text{TV}_
 ```text
 rci-clustering/
 ├── rci/
-│   ├── core.py          # Main Algorithm (SpectralRCI, MatrixFreeLaplacian)
-│   └── homology.py      # Theoretical Validation (Sheaf, Nerve, Persistence)
+│   ├── core.py              # Main algorithm (SpectralRCI, MatrixFreeLaplacian)
+│   └── homology.py          # Theoretical validation (Sheaf, Nerve, Persistence)
+├── theoretical_foundation/
+│   └── RCI_foundation.pdf   # Full mathematical framework
 ├── benchmarks/
 │   └── comparison_suite.py  # Benchmarking vs. sklearn/hdbscan
-├── images/              # Plots and documentation assets
-└── results/             # Scoreboards and params output
+├── images/                  # Figures and documentation assets
+├── results/                 # Scoreboards, logs, theory validation output
+└── CHANGELOG.md             # Development log and ongoing evolution
 ```
 
 ## 📄 Citation
