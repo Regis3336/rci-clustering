@@ -73,8 +73,15 @@ fig.show()
 <p align="center">
   <img 
     src="images/sphere_validation_v2.png" 
-    width="850" 
-    alt="RCI sphere validation: spectral embedding, Morse profiles and curvature transitions">
+    width="850"
+    alt="Spectral RCI analysis on a sphere: embedding, labels, Morse profiles and curvature signatures"
+  >
+</p>
+
+<p align="center">
+  <em>
+    Figure 1 — Spectral RCI on the sphere dataset. Top row: raw point cloud, RCI labels, matrix-on-demand spectral embedding, and farthest-point centers. Bottom row: Morse profiles \(M_c(k)\) with transition scales \(\kappa^\*\), curvature signature \(\Delta^2 M_c(k)\), eigenvalue spectrum, and residual diagnostics.
+  </em>
 </p>
 
 
