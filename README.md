@@ -13,9 +13,7 @@ RCI is a geometry-driven clustering method that detects structure using Morse pr
 > **Official implementation of "Reverse Clustering Impact: Geometry-Driven Minimal Parameters for Clustering via Morse Theory"**
 
 <p align="center">
-  <img src="images/sphere_validation.png" width="850" alt="RCI Analysis on Sphere: Profiles, Embedding, and Curvature">
-  <br>
-  <em>Figure 1: RCI analysis on a sphere. Top row: Raw data, Spectral Embedding, and Final Clustering. Bottom row: The Morse complexity profile $M_c(k)$ and the discrete curvature signature $\Delta^2 M_c(k)$ detecting the geometric transition.</em>
+  <img src="./images/sphere_validation.png" width="850" />
 </p>
 
 ---
