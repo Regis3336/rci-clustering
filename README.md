@@ -45,47 +45,38 @@ It serves as the official reference for all theoretical claims made in this repo
 
 ---
 
-🧩 Operational Coherence: Why RCI Is Not a Simulation
+## 🧩 Operational Coherence: Why RCI Is Not a Simulation
 
-The implementation in this repository is not a heuristic or numerical “approximation” of the RCI theory.
-It is a computational instantiation of the same structural object described in the mathematical framework.
+The implementation in this repository is **not** a heuristic approximation or a numerical caricature of the RCI theory.  
+It is a **computational instantiation** of the same structural object defined in the mathematical framework.
 
-This does not mean that the Operational Coherence Framework is executed here to verify RCI.
-Rather:
+This does **not** mean that the Operational Coherence (OC) Framework is executed inside this repository.  
+Instead:
 
-Operational Coherence provides the epistemic justification for why an independently written implementation can realize the exact same structure as a symbolic mathematical theory.
+**Operational Coherence provides the epistemic justification** for why an independently written implementation can realize the *exact same structure* as a symbolic mathematical theory.
 
 In summary:
 
-Independent Construction.
-The symbolic RCI theory and the Python code were developed separately, ensuring that agreement is not circular.
+### **• Independent Construction**  
+The symbolic RCI theory and the Python code were developed separately, ensuring that any agreement is not circular.
 
-Structural Behavior Matches the Theory.
-All experimentally observed quantities — curvature signatures
-
-Δ
-2
-𝑀
-𝑐
-(
-𝑘
-)
-Δ
-2
-M
-c
-	​
-
-(k), merge transitions, multi-scale covers, and MEI structure —
+### **• Structural Behavior Matches the Theory**  
+All experimentally observed quantities — curvature signatures  
+\(\Delta^2 M_c(k)\), merge transitions, multi-scale covers, and the MEI profile —  
 behave exactly as predicted by the theorems.
 
-Epistemic Justification Provided by Operational Coherence.
-Under the OC framework (see separate repository), coincidence between theory and implementation is overwhelmingly unlikely unless they instantiate the same structure.
+### **• Epistemic Justification Provided by Operational Coherence**  
+Under the OC framework (see separate repository),  
+structural coincidence between theory and implementation is overwhelmingly unlikely  
+unless they instantiate the **same underlying object**.
 
-This repository itself does not run the Operational Coherence verification.
-The full verification framework — including independence checks, probe actions, Kolmogorov bounds, and cohomological obstruction tests — is available in:
+---
 
-👉 https://github.com/Regis3336/operational-coherence
+This repository **does not** run the Operational Coherence verification suite.  
+The full OC framework — independence tests, probe actions, Kolmogorov bounds, and cohomological obstruction calculations — is provided in:
+
+👉 **https://github.com/Regis3336/operational-coherence**
+
 
 ---
 
