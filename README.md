@@ -105,34 +105,33 @@ fig.show()
 
 ---
 
-## 🔬 Reproducibility & Validation
+## 🔬 Reproducibility & Validation This repository provides the full suite required to reproduce all experiments and mathematical validations presented in the paper. 
 
-This repository provides the full suite required to reproduce all experiments and mathematical validations presented in the paper.
+### 1. Structural Homology Validation (Appendix C) We offer a computational verification of the sheaf-theoretic foundations of RCI.
+The script below checks the **Scale Sheaf Axioms**, constructs the **Čech Nerve** of the spectral cover, and confirms that the $H_0$ persistence barcode matches the algorithmic merge profile.
 
-### 1. Structural Homology Validation (Appendix C)
+<p align="center"> <img src="images/cluster_evolution_v2.png" width="800" alt="Topological Cluster Evolution" > </p>
 
-We offer a computational verification of the sheaf-theoretic foundations of RCI. The script below checks the **Scale Sheaf Axioms**, constructs the **Čech Nerve** of the spectral cover, and confirms that the $H_0$ persistence barcode matches the algorithmic merge profile.
+Run the theory validation suite:
 
-<p align="center">
-  <img 
-    src="images/cluster_evolution_v2.png" 
-    width="800" 
-    alt="Topological Cluster Evolution"
-  >
-</p>
+⚠️ You must run in module mode.
+Running the .py file directly will produce
+ModuleNotFoundError: No module named 'rci'.
 
-**Run the theory validation suite:**
-```bash
 python -m rci.homology
-```
-*Output: Verifies Separatedness, Gluing, Functoriality, and Nerve Theorem compliance.*
 
-### 2. Benchmark Comparison
-Compare RCI against classical algorithms (KMeans, DBSCAN, HDBSCAN, Spectral Clustering, GMM) using the **MEI** metric across 8 geometric datasets.
+2. Benchmark Comparison (comparsion_suite)
 
-```bash
-python -m benchmarks.comparison_suite
-```
+RCI is benchmarked against classical algorithms (KMeans, DBSCAN, HDBSCAN, Spectral, GMM) using the MEI metric across 8 geometric datasets.
+
+Run the benchmark suite:
+
+Again, you must run as a module — otherwise Python cannot resolve the imports from rci/.
+
+python -m benchmarks.comparsion_suite
+
+Output: Generates results/scoreboard.csv and high-resolution plots.
+
 *Output: Generates `results/scoreboard.csv`, reproduces figure images in `images/`, and computes MEI scores.*
 
 <table align="center">
