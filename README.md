@@ -62,7 +62,7 @@ The symbolic RCI theory and the Python code were developed separately, ensuring 
 
 ### **• Structural Behavior Matches the Theory**  
 All experimentally observed quantities — curvature signatures  
-\(\Delta^2 M_c(k)\), merge transitions, multi-scale covers, and the MEI profile —  
+$\(\Delta^2 M_c(k)\)$, merge transitions, multi-scale covers, and the MEI profile —  
 behave exactly as predicted by the theorems.
 
 ### **• Epistemic Justification Provided by Operational Coherence**  
