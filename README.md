@@ -217,11 +217,13 @@ rci-clustering/
 If you use RCI or the MEI metric in your research, please cite:
 
 ```bibtex
-@article{souza2025rci,
-  title={Reverse Clustering Impact: Geometry-Driven Minimal Parameters for Clustering via Morse Theory},
-  author={Reinaldo Elias de Souza Junior},
-  journal={arXiv preprint},
-  year={2025}
+@misc{junior2025rci,
+  title        = {Reverse Clustering Impact: Geometry-Driven Minimal Parameters for Clustering via Morse Theory},
+  author       = {Junior, Reinaldo Elias de Souza},
+  year         = {2025},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.17742951},
+  url          = {https://doi.org/10.5281/zenodo.17742951}
 }
 ```
 
