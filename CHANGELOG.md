@@ -34,7 +34,7 @@ Planned extensions and research directions:
         
     - auto-tuned spectral embedding
         
-    - generation of `images/sphere_validation_v2.png`
+    - generation of `images/sphere_validation.png`
         
 - **Homology validation module (`rci/homology.py`):**
     
@@ -44,7 +44,7 @@ Planned extensions and research directions:
         
     - H0H_0H0​ persistence barcode reconstruction
         
-    - generation of `images/cluster_evolution_v2.png`
+    - generation of `images/cluster_evolution.png`
         
 - **Benchmark suite (`benchmarks/comparsion_suite.py`):**
     
