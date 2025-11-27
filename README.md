@@ -14,7 +14,7 @@ RCI is a geometry-driven clustering method that detects structure using Morse pr
 
 <p align="center">
   <img 
-    src="https://raw.githubusercontent.com/Regis3336/rci-clustering/main/images/sphere_validation.png" 
+    src="https://raw.githubusercontent.com/Regis3336/rci-clustering/main/images/sphere_validation_v2.png" 
     width="850" 
     alt="RCI sphere validation: spectral embedding, Morse profiles and curvature transitions">
 </p>
