@@ -69,19 +69,12 @@ fig.show()
 ```
 
 ---
-
 <p align="center">
   <img 
     src="images/sphere_validation_v2.png" 
     width="850"
     alt="Spectral RCI analysis on a sphere: embedding, labels, Morse profiles and curvature signatures"
   >
-</p>
-
-<p align="center">
-  <em>
-    Figure&nbsp;1 — Spectral RCI on the sphere dataset. Top row: raw point cloud, RCI labels, matrix-on-demand spectral embedding, and farthest-point centers. Bottom row: Morse profiles \(M_c(k)\) with transition scales \(\kappa^\ast\), curvature signature \(\Delta^{2} M_c(k)\), eigenvalue spectrum, and residual diagnostics.
-  </em>
 </p>
 
 ## 🔬 Reproducibility & Validation
@@ -94,15 +87,12 @@ We offer a computational verification of the sheaf-theoretic foundations of RCI.
 
 <p align="center">
   <img 
-    src="images/cluster_evolution.png" 
+    src="images/cluster_evolution_v2.png" 
     width="800" 
     alt="Topological Cluster Evolution"
   >
-  <br>
-  <em>
-    Figure&nbsp;2 — Geometric visualization of the \(H_0\)-barcode evolution via Čech nerves of the spectral cover. RCI merge events correspond exactly to topological changes in the nerve.
-  </em>
 </p>
+
 
 **Run the validation suite:**
 ```bash
