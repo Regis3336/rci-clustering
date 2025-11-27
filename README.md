@@ -1,9 +1,6 @@
 # rci-clustering
 RCI is a geometry-driven clustering method that detects structure using Morse profiles, local curvature, and a matrix-on-demand Laplacian. It runs with a single scale parameter, auto-adapts density and intrinsic dimension, and identifies clusters as regions where geometric structure resists morphological erasure.
 
-
-
-```markdown
 # RCI: Reverse Clustering Impact
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -11,6 +8,8 @@ RCI is a geometry-driven clustering method that detects structure using Morse pr
 [![Status](https://img.shields.io/badge/status-research-red.svg)](https://github.com/)
 
 > **Official implementation of "Reverse Clustering Impact: Geometry-Driven Minimal Parameters for Clustering via Morse Theory"**
+
+
 
 ---
 
