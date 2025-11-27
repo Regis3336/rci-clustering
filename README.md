@@ -80,22 +80,28 @@ fig.show()
 
 <p align="center">
   <em>
-    Figure 1 — Spectral RCI on the sphere dataset. Top row: raw point cloud, RCI labels, matrix-on-demand spectral embedding, and farthest-point centers. Bottom row: Morse profiles \(M_c(k)\) with transition scales \(\kappa^\*\), curvature signature \(\Delta^2 M_c(k)\), eigenvalue spectrum, and residual diagnostics.
+    Figure&nbsp;1 — Spectral RCI on the sphere dataset. Top row: raw point cloud, RCI labels, matrix-on-demand spectral embedding, and farthest-point centers. Bottom row: Morse profiles \(M_c(k)\) with transition scales \(\kappa^\ast\), curvature signature \(\Delta^{2} M_c(k)\), eigenvalue spectrum, and residual diagnostics.
   </em>
 </p>
 
-
 ## 🔬 Reproducibility & Validation
 
-This repository contains the full suite to reproduce the experiments and mathematical validation presented in the paper.
+This repository provides the full suite required to reproduce all experiments and mathematical validations presented in the paper.
 
-### 1. Structural Homology Validation (Appendix C)
-We provide a computational proof of the sheaf-theoretic foundations of RCI. The script below validates the **Scale Sheaf Axioms**, constructs the **Čech Nerve** of the spectral cover, and verifies that the $H_0$ persistence barcode matches the algorithmic merge profile.
+### 1. Structural Homology Validation (Appendix&nbsp;C)
+
+We offer a computational verification of the sheaf-theoretic foundations of RCI. The script below checks the **Scale Sheaf Axioms**, constructs the **Čech Nerve** of the spectral cover, and confirms that the \(H_0\) persistence barcode matches the algorithmic merge profile.
 
 <p align="center">
-  <img src="images/cluster_evolution.png" width="800" alt="Topological Cluster Evolution">
+  <img 
+    src="images/cluster_evolution.png" 
+    width="800" 
+    alt="Topological Cluster Evolution"
+  >
   <br>
-  <em>Figure 2: Geometric visualization of the $H_0$-barcode evolution via Čech nerves of the spectral cover. RCI merge events correspond exactly to topological changes in the nerve.</em>
+  <em>
+    Figure&nbsp;2 — Geometric visualization of the \(H_0\)-barcode evolution via Čech nerves of the spectral cover. RCI merge events correspond exactly to topological changes in the nerve.
+  </em>
 </p>
 
 **Run the validation suite:**
