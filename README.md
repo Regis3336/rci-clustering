@@ -190,14 +190,14 @@ The next development phase focuses on extending RCI from point-cloud geometry to
 ```text
 rci-clustering/
 ├── rci/
-│   ├── core.py              # Main algorithm (SpectralRCI, MatrixFreeLaplacian)
+│   ├── core.py              # Main algorithm (SpectralRCI, MatrixOnDemandaplacian)
 │   └── homology.py          # Theoretical validation (Sheaf, Nerve, Persistence)
 ├── theoretical_foundation/
 │   └── RCI_foundation.pdf   # Full mathematical framework
 ├── benchmarks/
-│   └── comparison_suite.py  # Benchmarking vs. sklearn/hdbscan
+│   └── comparison_suite.py  # Benchmarking 
 ├── images/                  # Figures and documentation assets
-├── results/                 # Scoreboards, logs, theory validation output
+├── results/                 # Scoreboard from the benchmark
 └── CHANGELOG.md             # Development log and ongoing evolution
 ```
 
