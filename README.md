@@ -113,7 +113,7 @@ X = sample_torus(n=3000, R=2.0, r=0.6, noise=0.01)
 #    is used only as a geometric probe, not as the clustering space.
 model = SpectralRCI(
     n_eigenvectors=5,
-    use_spectral=False,   # <- geometric RCI as the default in the README
+    use_spectral=False,   # geometric RCI (default in README)
     mutual_knn=True,
     self_tuning=True
 )
@@ -129,10 +129,11 @@ fig.show()
 # Advanced: spectral RCI (clustering in the spectral embedding)
 spec_model = SpectralRCI(
     n_eigenvectors=5,
-    use_spectral=True,    # <- explicitly switch to spectral space
-    mutual_knn=True
+    use_spectral=True,    # switch to spectral space
+    mutual_knn=True,
     self_tuning=True
 )
+
 spec_model.fit(X)
 spec_labels = spec_model.predict()
 ```
