@@ -108,6 +108,44 @@ python -m benchmarks.comparison_suite
 ```
 *Output: Generates `results/scoreboard.csv` and high-resolution plots.*
 
+<table align="center">
+  <thead>
+    <tr>
+      <th>Dataset</th>
+      <th>RCI</th>
+      <th>KMeans</th>
+      <th>DBSCAN</th>
+      <th>HDBSCAN</th>
+      <th>Spectral</th>
+      <th>GMM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Sphere</td>     <td><b>0.70</b></td> <td>0.12</td> <td>0.56</td> <td>0.44</td> <td>0.10</td> <td>0.13</td></tr>
+    <tr><td>Saddle</td>     <td>0.03</td> <td>0.06</td> <td><b>0.52</b></td> <td>0.41</td> <td>0.07</td> <td>0.07</td></tr>
+    <tr><td>Torus</td>      <td><b>0.74</b></td> <td>0.03</td> <td>0.00</td> <td>0.44</td> <td>0.03</td> <td>0.03</td></tr>
+    <tr><td>Dumbbell</td>   <td><b>0.75</b></td> <td>0.00</td> <td>0.26</td> <td>0.27</td> <td>0.00</td> <td>0.00</td></tr>
+    <tr><td>Link</td>       <td><b>0.47</b></td> <td>0.04</td> <td>0.02</td> <td>0.10</td> <td>0.03</td> <td>0.03</td></tr>
+    <tr><td>Spiral</td>     <td><b>0.61</b></td> <td>0.03</td> <td>0.03</td> <td>0.30</td> <td>0.03</td> <td>0.03</td></tr>
+    <tr><td>Swiss Roll</td> <td><b>0.61</b></td> <td>0.02</td> <td>0.17</td> <td>0.04</td> <td>0.04</td> <td>0.02</td></tr>
+    <tr><td>Trefoil</td>    <td><b>0.68</b></td> <td>0.03</td> <td>0.05</td> <td>0.37</td> <td>0.03</td> <td>0.03</td></tr>
+  </tbody>
+  <tfoot>
+    <tr><td><b>Mean</b></td>    <td><b>0.57</b></td> <td>0.04</td> <td>0.20</td> <td>0.30</td> <td>0.04</td> <td>0.04</td></tr>
+    <tr><td><b>Std Dev</b></td> <td>0.22</td> <td>0.03</td> <td>0.21</td> <td>0.14</td> <td>0.03</td> <td>0.04</td></tr>
+  </tfoot>
+</table>
+
+<p align="center">
+  <em>
+    Table&nbsp;1 — MEI-based structural comparison across benchmark datasets.
+    RCI achieves the highest mean MEI (0.57), winning in 7 out of 8 datasets.
+    Classical clustering algorithms operate in a regime of structural erasure,
+    with mean MEI values near zero.
+  </em>
+</p>
+
+
 ---
 
 ## 📐 Theoretical Foundations
