@@ -64,9 +64,9 @@ Planned extensions and research directions:
         
 - **Repository layout:**
     
-    - `rci/`, `benchmarks/`, `images/`, `results/`, `theory/` directories
+    - `rci/`, `benchmarks/`, `images/`, `results/`, `theorical_foundation/` directories
         
-    - versioned mathematical foundations in `theory/RCI_foundation.pdf`
+    - versioned mathematical foundations in `theorical_foundation/RCI_foundation.pdf`
         
 
 ---
