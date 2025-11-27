@@ -45,20 +45,47 @@ It serves as the official reference for all theoretical claims made in this repo
 
 ---
 
-## 🧩 Operational Coherence: Why RCI Is Not a Simulation
+🧩 Operational Coherence: Why RCI Is Not a Simulation
 
-The implementation in this repository is not a numerical illustration or a heuristic simulation. It is an independent computational instantiation whose structural identity with the symbolic theory has been formally verified using the **[Operational Coherence Framework](https://github.com/Regis3336/operational-coherence)**.
+The implementation in this repository is not a heuristic or numerical “approximation” of the RCI theory.
+It is a computational instantiation of the same structural object described in the mathematical framework.
 
-Under this framework, we verify:
+This does not mean that the Operational Coherence Framework is executed here to verify RCI.
+Rather:
 
-1.  **Independence:** The symbolic RCI theory (Syn) and the Python implementation (Comp) were constructed in disjoint categories, preventing circular validity.
-2.  **Yoneda Operational Triangle:** The implementation and theory produce identical actions across a wide range of probes (datasets, perturbations, scales), implying structural identity.
-3.  **Kolmogorov Rigidity:** The probability of accidental agreement is $< 10^{-300}$, rendering convergence a mathematical certainty rather than an empirical observation.
-4.  **Cohomological Verification:** The obstruction class $[T - I] \in H^0(X, \mathcal{E})$ vanishes, meaning there is no topological barrier preventing the code from being the exact object described by the theory.
+Operational Coherence provides the epistemic justification for why an independently written implementation can realize the exact same structure as a symbolic mathematical theory.
 
-**Conclusion:** Every experiment, figure, and metric in this repository is a **computable instantiation** of the RCI theory. The curvature signature $\Delta^2 M_c(k)$ in the code is the same object as in the theorem.
+In summary:
 
-*(To reproduce this verification, see the `operational-coherence` repository).*
+Independent Construction.
+The symbolic RCI theory and the Python code were developed separately, ensuring that agreement is not circular.
+
+Structural Behavior Matches the Theory.
+All experimentally observed quantities — curvature signatures
+
+Δ
+2
+𝑀
+𝑐
+(
+𝑘
+)
+Δ
+2
+M
+c
+	​
+
+(k), merge transitions, multi-scale covers, and MEI structure —
+behave exactly as predicted by the theorems.
+
+Epistemic Justification Provided by Operational Coherence.
+Under the OC framework (see separate repository), coincidence between theory and implementation is overwhelmingly unlikely unless they instantiate the same structure.
+
+This repository itself does not run the Operational Coherence verification.
+The full verification framework — including independence checks, probe actions, Kolmogorov bounds, and cohomological obstruction tests — is available in:
+
+👉 https://github.com/Regis3336/operational-coherence
 
 ---
 
