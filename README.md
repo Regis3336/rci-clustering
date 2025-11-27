@@ -98,53 +98,6 @@ pip install -r requirements.txt
 
 ---
 
-## ⚡ Quick Start
-
-RCI is designed to be a drop-in replacement for standard clustering workflows.
-
-```python
-from rci.core import SpectralRCI, sample_torus
-
-# 1. Generate synthetic data (e.g., a torus in R^3)
-X = sample_torus(n=3000, R=2.0, r=0.6, noise=0.01)
-
-# 2. Initialize RCI in geometric mode
-#    Clustering is performed in the ambient space; spectral information
-#    is used only as a geometric probe, not as the clustering space.
-model = SpectralRCI(
-    n_eigenvectors=5,
-    use_spectral=False,   # geometric RCI (default in README)
-    mutual_knn=True,
-    self_tuning=True
-)
-
-# 3. Fit and predict labels in the original space
-model.fit(X)
-labels = model.predict()
-
-# 4. Visualize results (Morse profiles, curvature signature, clustering)
-fig = model.plot_results_3d()
-fig.show()
-
-# Advanced: spectral RCI (clustering in the spectral embedding)
-spec_model = SpectralRCI(
-    n_eigenvectors=5,
-    use_spectral=True,    # switch to spectral space
-    mutual_knn=True,
-    self_tuning=True
-)
-
-spec_model.fit(X)
-spec_labels = spec_model.predict()
-```
-
-By default, the example runs RCI in geometric mode (clustering in the ambient space).
-The spectral variant, which clusters in the eigenvector embedding, can be enabled with use_spectral=True.
-
-
-
----
-
 ## 🔬 Reproducibility & Validation This repository provides the full suite required to reproduce all experiments and mathematical validations presented in the paper. 
 
 ### 1. Structural Homology Validation (Appendix C) We offer a computational verification of the sheaf-theoretic foundations of RCI.
