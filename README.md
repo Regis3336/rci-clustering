@@ -3,200 +3,199 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Status](https://img.shields.io/badge/status-research-red.svg)](https://github.com/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17759236.svg)](https://doi.org/10.5281/zenodo.17759236)
 
 > **Official implementation of "Reverse Clustering Impact: Geometry-Driven Minimal Parameters for Clustering via Morse Theory"**
 
+> KMeans slices a torus into wedges. DBSCAN fragments a trefoil.
+> RCI reads the geometry — with **one parameter**.
+
 <p align="center">
-  <img 
-    src="images/sphere_validation.png" 
-    width="850"
-    alt="Spectral RCI analysis on a sphere: embedding, labels, Morse profiles and curvature signatures"
-  >
+  <img src="images/hero_comparison.png" width="900" alt="KMeans and DBSCAN fail on non-linear geometry; RCI detects intrinsic structure">
 </p>
 
 ---
 
-## 📖 Overview
-
-**RCI** is a parameter-minimal geometric clustering framework. Unlike classical methods (KMeans, DBSCAN) that rely on heuristic hyperparameters, RCI couples local geometric variation with global multi-scale structure using **Discrete Morse Theory**.
-
-The algorithm requires only a single operational scale parameter, $r$. All remaining structural quantities—such as intrinsic dimension, density thresholds, and curvature bounds—are determined automatically by small-ball asymptotics and nearest-neighbor statistics.
-
-### Key Contributions
-*   **Curvature-Driven:** Detects cluster boundaries via a curvature-sensitive signature $\Delta^2 M_c(k)$, which is negative on positive curvature regions and positive on saddles.
-*   **Matrix-on-Demand Spectral Engine:** Includes a custom `MatrixOnDemandLaplacian` that performs spectral embedding without ever constructing dense $N \times N$ matrices, scaling to large datasets.
-*   **Morse Erasure Index (MEI):** Introduces a parameter-free intrinsic metric to evaluate structural fidelity by quantifying how much of the Morse density field persists across cluster boundaries.
-
----
-
-## 📚 Theoretical Foundation
-
-The full mathematical foundation of RCI is provided in the included paper:
-
-📄 **[theoretical_foundation/RCI_foundation.pdf](theoretical_foundation/RCI_foundation.pdf)**
-
-This document presents:
-1.  The derivation of the **Curvature Law**: $\Delta^2 M_c(k) \approx - C_d \, S(x_c) \, r_k^2$.
-2.  The multi-scale **Morse framework**.
-3.  The discrete **farthest-point geometry** underlying the global coverage.
-4.  The formal construction of the **MEI metric**.
-
-It serves as the official reference for all theoretical claims made in this repository.
-
----
-
-## 🧩 Operational Coherence: Why RCI Is Not a Simulation
-
-The implementation in this repository is **not** a heuristic approximation or a numerical imitation of the RCI theory.  
-It is a **computational instantiation** of the same structure defined in the mathematical framework.
-
-Operational Coherence (OC) is **not executed here as a separate framework**.  
-Instead:
-
-**In the case of RCI, the role normally played by the Operational Coherence framework is carried out directly by the code itself — most importantly by `homology.py`.**
-
-That script explicitly verifies the structural laws of the theory:
-- it reconstructs the Čech nerve,  
-- checks the Scale Sheaf Axioms,  
-- confirms the $\(H_0\)$ barcode against the merge profile,  
-- and ensures that the discrete Morse transitions match the theoretical predictions.
-
-In other words:
-
-### **• Independent Construction**
-The symbolic theory in the PDF and the Python implementation were written separately.  
-Their agreement is not circular.
-
-### **• The Code Enacts the Theory’s Structural Laws**
-Every quantity predicted by the theorems —  
-$\(\Delta^2 M_c(k)\)$, merge transitions, curvature signatures, MEI structure —  
-appears in the implementation exactly as the theory dictates.
-
-### **• Operational Coherence as Epistemic Justification**
-The OC framework (in the separate repository) explains *why* such an independently written implementation can realize the same object as the theory.  
-But here, for RCI, **the structural verification happens internally** through the mechanisms encoded in `homology.py` and the farthest-point geometry of `core.py`.
-
----
-
-If you want to see the *general* OC framework — including explicit independence tests, probe actions, Kolmogorov bounds, and cohomological obstruction checks — it is available at:
-
-👉 **https://github.com/Regis3336/operational-coherence**
-
----
-
-## 🛠 Installation
-
-Clone the repository and install the dependencies:
+## 🚀 Run in 30 seconds
 
 ```bash
 git clone https://github.com/Regis3336/rci-clustering.git
 cd rci-clustering
 pip install -r requirements.txt
+python -m rci.core
 ```
 
-**Requirements:** `numpy`, `scipy`, `scikit-learn`, `faiss-cpu` (or gpu), `plotly`, `pandas`, `hdbscan`, `networkx`.
+→ Produces clustering + geometry diagnostics immediately
 
 ---
 
-## 🚀 Quick Start
+## 🧪 Minimal example
 
-To see RCI running immediately (spectral mode demo included), just run:
+```python
+from rci.core import SpectralRCI
+from sklearn.datasets import make_moons
 
-python -m rci.core
+X, _ = make_moons(n_samples=500, noise=0.05)
 
-## 🔬 Reproducibility & Validation This repository provides the full suite required to reproduce all experiments and mathematical validations presented in the paper. 
+model = SpectralRCI(r=0.1)
+model.fit(X)
+labels = model.predict()
 
-### 1. Structural Homology Validation (Appendix C) We offer a computational verification of the sheaf-theoretic foundations of RCI.
-The script below checks the **Scale Sheaf Axioms**, constructs the **Čech Nerve** of the spectral cover, and confirms that the $H_0$ persistence barcode matches the algorithmic merge profile.
+print(labels[:10])
+```
 
-<p align="center"> <img src="images/cluster_evolution.png" width="800" alt="Topological Cluster Evolution" > </p>
+---
 
-Run the theory validation suite (must be executed as a module):
+## 📖 What is RCI?
 
-python -m rci.homology
+RCI is a geometric clustering method that detects intrinsic structure in non-linear data.
 
-This command generates images/cluster_evolution.png.
+Unlike classical methods:
 
-2. Benchmark Comparison (comparison_suite.py)
+* **KMeans** imposes Euclidean geometry
+* **DBSCAN** requires careful density tuning
 
-RCI is benchmarked against classical algorithms (KMeans, DBSCAN, HDBSCAN, Spectral, GMM) using the MEI metric across 8 geometric datasets.
+RCI instead reads the **intrinsic curvature** of the data manifold.
 
-Run the benchmark suite (also as a module):
+The algorithm requires **only one parameter** $r$.
+All structural quantities — intrinsic dimension, density thresholds, curvature bounds — are inferred automatically from local geometry.
 
-python -m benchmarks.comparison_suite
+---
 
-Output:
-Generates results/scoreboard.csv (generated by comparison_suite.py), produces the spectral-RCI visualization sphere_validation.png (generated by core.py), produces the homology-validation diagram cluster_evolution.png (generated by homology.py), saves both in the images/ folder, and computes all MEI scores.
+## 🧠 Core ideas
+
+**Curvature Law** — cluster boundaries are detected via the curvature-sensitive signature $\Delta^2 M_c(k)$, which is negative on positively-curved regions and positive on saddles.
+
+**Matrix-on-Demand Spectral Engine** — custom `MatrixOnDemandLaplacian` performs spectral embedding without constructing dense $N \times N$ matrices, scaling gracefully to large datasets.
+
+**Morse Erasure Index (MEI)** — a parameter-free intrinsic metric that quantifies how much of the Morse density field persists across cluster boundaries. Used as the primary evaluation metric throughout.
+
+---
+
+## 📊 Benchmark results
+
+RCI achieves the highest structural fidelity in **7 of 8 datasets**.
 
 <table align="center">
   <thead>
     <tr>
-      <th>Dataset</th>
-      <th>RCI</th>
-      <th>KMeans</th>
-      <th>DBSCAN</th>
-      <th>HDBSCAN</th>
-      <th>Spectral</th>
-      <th>GMM</th>
+      <th>Dataset</th><th>RCI</th><th>KMeans</th><th>DBSCAN</th><th>HDBSCAN</th><th>Spectral</th><th>GMM</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td>Sphere</td>     <td><b>0.70</b></td> <td>0.12</td> <td>0.56</td> <td>0.44</td> <td>0.10</td> <td>0.13</td></tr>
-    <tr><td>Saddle</td>     <td>0.03</td> <td>0.06</td> <td><b>0.52</b></td> <td>0.41</td> <td>0.07</td> <td>0.07</td></tr>
-    <tr><td>Torus</td>      <td><b>0.74</b></td> <td>0.03</td> <td>0.00</td> <td>0.44</td> <td>0.03</td> <td>0.03</td></tr>
-    <tr><td>Dumbbell</td>   <td><b>0.75</b></td> <td>0.00</td> <td>0.26</td> <td>0.27</td> <td>0.00</td> <td>0.00</td></tr>
-    <tr><td>Link</td>       <td><b>0.47</b></td> <td>0.04</td> <td>0.02</td> <td>0.10</td> <td>0.03</td> <td>0.03</td></tr>
-    <tr><td>Spiral</td>     <td><b>0.61</b></td> <td>0.03</td> <td>0.03</td> <td>0.30</td> <td>0.03</td> <td>0.03</td></tr>
-    <tr><td>Swiss Roll</td> <td><b>0.61</b></td> <td>0.02</td> <td>0.17</td> <td>0.04</td> <td>0.04</td> <td>0.02</td></tr>
-    <tr><td>Trefoil</td>    <td><b>0.68</b></td> <td>0.03</td> <td>0.05</td> <td>0.37</td> <td>0.03</td> <td>0.03</td></tr>
+    <tr><td>Sphere</td>     <td><b>0.70</b></td><td>0.12</td><td>0.56</td><td>0.44</td><td>0.10</td><td>0.13</td></tr>
+    <tr><td>Saddle</td>     <td>0.03</td><td>0.06</td><td><b>0.52</b></td><td>0.41</td><td>0.07</td><td>0.07</td></tr>
+    <tr><td>Torus</td>      <td><b>0.74</b></td><td>0.03</td><td>0.00</td><td>0.44</td><td>0.03</td><td>0.03</td></tr>
+    <tr><td>Dumbbell</td>   <td><b>0.75</b></td><td>0.00</td><td>0.26</td><td>0.27</td><td>0.00</td><td>0.00</td></tr>
+    <tr><td>Link</td>       <td><b>0.47</b></td><td>0.04</td><td>0.02</td><td>0.10</td><td>0.03</td><td>0.03</td></tr>
+    <tr><td>Spiral</td>     <td><b>0.61</b></td><td>0.03</td><td>0.03</td><td>0.30</td><td>0.03</td><td>0.03</td></tr>
+    <tr><td>Swiss Roll</td> <td><b>0.61</b></td><td>0.02</td><td>0.17</td><td>0.04</td><td>0.04</td><td>0.02</td></tr>
+    <tr><td>Trefoil</td>    <td><b>0.68</b></td><td>0.03</td><td>0.05</td><td>0.37</td><td>0.03</td><td>0.03</td></tr>
   </tbody>
   <tfoot>
-    <tr><td><b>Mean</b></td>    <td><b>0.57</b></td> <td>0.04</td> <td>0.20</td> <td>0.30</td> <td>0.04</td> <td>0.04</td></tr>
-    <tr><td><b>Std Dev</b></td> <td>0.22</td> <td>0.03</td> <td>0.21</td> <td>0.14</td> <td>0.03</td> <td>0.04</td></tr>
+    <tr><td><b>Mean</b></td>   <td><b>0.57</b></td><td>0.04</td><td>0.20</td><td>0.30</td><td>0.04</td><td>0.04</td></tr>
+    <tr><td><b>Std Dev</b></td><td>0.22</td><td>0.03</td><td>0.21</td><td>0.14</td><td>0.03</td><td>0.04</td></tr>
   </tfoot>
 </table>
 
 <p align="center">
-  <em>
-    Table 1 — MEI-based structural comparison across benchmark datasets.
-    RCI achieves the highest mean MEI (0.57), winning in 7 out of 8 datasets.
-  </em>
+  <em>MEI-based structural comparison. RCI achieves the highest mean (0.57), winning 7 of 8 datasets.</em>
+</p>
+
+Run the full benchmark suite:
+
+```bash
+python -m benchmarks.comparison_suite
+```
+
+---
+
+## 🔬 Reproducibility & validation
+
+### Spectral RCI pipeline
+
+<p align="center">
+  <img src="images/sphere_validation.png" width="850" alt="Spectral RCI on the sphere dataset">
+</p>
+
+Top: raw point cloud, RCI labels, spectral embedding, farthest-point centers.
+Bottom: Morse profiles, curvature signature, eigenvalue spectrum, diagnostics.
+
+---
+
+### Structural homology validation (Appendix C)
+
+`homology.py` verifies the theory computationally:
+
+* reconstructs the Čech nerve
+* checks the Scale Sheaf Axioms
+* matches persistence with merge transitions
+
+```bash
+python -m rci.homology
+```
+
+<p align="center">
+  <img src="images/cluster_evolution.png" width="800" alt="Topological Cluster Evolution">
 </p>
 
 ---
 
-## 🧭 Changelog & Roadmap
+## 📚 Theoretical foundation
 
-The complete evolution log of the project is available in: **[CHANGELOG.md](CHANGELOG.md)**.
+📄 **[theoretical_foundation/RCI_foundation.pdf](theoretical_foundation/RCI_foundation.pdf)**
 
-### Roadmap — Upcoming Extensions
-The next development phase focuses on extending RCI from point-cloud geometry to combinatorial and temporal structures:
+Includes:
 
-*   **Graph-RCI:** Generalization of Morse curvature and MEI to weighted graphs, leveraging spectral graph Laplacians.
-*   **Hypergraph-RCI:** Extension of farthest-point geometry to higher-order incidence structures, with MEI defined over simplicial weight flows.
-*   **Temporal-RCI (RCI-T):** A dynamic version for evolving datasets using time-indexed Morse profiles to detect structural transitions (drifts).
+* Curvature Law
+* Multi-scale Morse framework
+* Farthest-point geometry
+* MEI construction
 
 ---
 
-## 📂 Repository Structure
+## 🧩 Implementation and theory
+
+The code is a **computational instantiation** of the mathematical framework, not a heuristic approximation.
+
+The symbolic theory and the implementation were developed independently — their agreement is verified internally via `homology.py`.
+
+Related framework:
+
+👉 https://github.com/Regis3336/operational-coherence
+
+---
+
+## 🧭 Roadmap
+
+* **Graph-RCI** — extension to weighted graphs using spectral Laplacians
+* **Hypergraph-RCI** — extension to higher-order incidence structures
+* **Temporal-RCI (RCI-T)** — dynamic clustering with time-indexed Morse profiles
+
+Full log: [CHANGELOG.md](CHANGELOG.md)
+
+---
+
+## 📂 Repository structure
 
 ```text
 rci-clustering/
 ├── rci/
-│   ├── core.py              # Main algorithm (SpectralRCI, MatrixOnDemandaplacian)
-│   └── homology.py          # Theoretical validation (Sheaf, Nerve, Persistence)
+│   ├── core.py                  # Main algorithm (SpectralRCI, MatrixOnDemandLaplacian)
+│   └── homology.py              # Theoretical validation (Sheaf, Nerve, Persistence)
 ├── theoretical_foundation/
-│   └── RCI_foundation.pdf   # Full mathematical framework
+│   └── RCI_foundation.pdf       # Full mathematical framework
 ├── benchmarks/
-│   └── comparison_suite.py  # Benchmarking 
-├── images/                  # Figures and documentation assets
-├── results/                 # Scoreboard from the benchmark
-└── CHANGELOG.md             # Development log and ongoing evolution
+│   └── comparison_suite.py      # Benchmark suite
+├── generate_hero_image.py       # Generates images/hero_comparison.png
+├── images/                      # Figures and documentation assets
+├── results/                     # Scoreboard from the benchmark
+└── CHANGELOG.md                 # Development log
 ```
 
-## 📄 Citation
+---
 
-If you use RCI or the MEI metric in your research, please cite:
+## 📄 Citation
 
 ```bibtex
 @misc{junior2025rci,
@@ -209,7 +208,8 @@ If you use RCI or the MEI metric in your research, please cite:
 }
 ```
 
+---
+
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
+MIT License — see [LICENSE](LICENSE).
