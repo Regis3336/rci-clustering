@@ -168,7 +168,7 @@ def rci_simple(X, k=15, n_clusters=None, seed=0):
 # Try to import real SpectralRCI; fall back to rci_simple
 # =============================================================================
 try:
-    from core import SpectralRCI as _SpectralRCI
+    from rci.core import SpectralRCI as _SpectralRCI
  
     def run_rci(X):
         model = _SpectralRCI()
