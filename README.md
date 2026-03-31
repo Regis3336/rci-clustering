@@ -37,7 +37,7 @@ from sklearn.datasets import make_moons
 
 X, _ = make_moons(n_samples=500, noise=0.05)
 
-model = SpectralRCI(r=0.1)
+model = SpectralRCI()
 model.fit(X)
 labels = model.predict()
 
