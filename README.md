@@ -157,9 +157,16 @@ python -m rci.homology
 
 ## 📚 Theoretical foundation
 
-📄 **[theoretical_foundation/RCI_foundation.pdf](theoretical_foundation/RCI_foundation.pdf)**
+📄 **Current version:** [theoretical_foundation/RCI_foundation_v2.pdf](theoretical_foundation/RCI_foundation_v2.pdf)
 
-Includes:
+📦 **Archived version:** [theoretical_foundation/RCI_foundation_v1.pdf](theoretical_foundation/RCI_foundation_v1.pdf)
+
+The repository keeps both versions for transparency.
+
+- `RCI_foundation_v1.pdf` is the original mathematical foundation document.
+- `RCI_foundation_v2.pdf` is the current revised foundation, introducing the updated formulation around canonical RCI cells, canonical radii, canonical homology, dynamic homology, and the RCI nerve moduli.
+
+The current version includes:
 
 - metric definition of RCI;
 - canonical RCI cells and canonical radii;
@@ -206,7 +213,8 @@ rci-clustering/
 │   ├── core.py                  # Main metric RCI algorithm (canonical cells, radii, MatrixOnDemandLaplacian)
 │   └── homology.py              # Validation of canonical homology, scale sheaf, nerve moduli, persistence
 ├── theoretical_foundation/
-│   └── RCI_foundation.pdf       # Full mathematical framework
+│   ├── RCI_foundation_v1.pdf    # Archived original foundation
+│   └── RCI_foundation_v2.pdf    # Current revised mathematical framework
 ├── benchmarks/
 │   └── comparison_suite.py      # Benchmark suite
 ├── generate_hero_image.py       # Generates images/hero_comparison.png
