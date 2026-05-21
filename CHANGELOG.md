@@ -274,6 +274,24 @@ Planned extensions and research directions:
   - Added transparency about limitations and possible subtle errors;
   - Paper remains open to external correction and review.
 
+- **Versioned theoretical foundation PDFs:**
+  - Renamed the original foundation document to `theoretical_foundation/RCI_foundation_v1.pdf`.
+  - Added the revised foundation document as `theoretical_foundation/RCI_foundation_v2.pdf`.
+  - Preserved both versions in the repository for transparency and historical traceability.
+
+### Changed
+
+- **Theoretical foundation document updated:**
+  - `RCI_foundation_v1.pdf` now serves as the archived original foundation.
+  - `RCI_foundation_v2.pdf` is the current reference version.
+  - The README now points explicitly to the current v2 PDF while preserving access to v1.
+
+### Documentation
+
+- Updated README links to distinguish the archived original PDF from the current revised PDF:
+  - `RCI_foundation_v1.pdf` — archived original version;
+  - `RCI_foundation_v2.pdf` — current revised version.
+
 ### Fixed
 
 - Fixed ambiguity between canonical homology and dynamic homology.
@@ -288,7 +306,7 @@ Planned extensions and research directions:
 
 ---
 
-## [1.2.0] — README & Visual Communication Update — 2025-03-30
+## [1.2.0] — README & Visual Communication Update — 2026-03-30
 
 ### Added
 - **Hero comparison image (`images/hero_comparison.png`):**  
