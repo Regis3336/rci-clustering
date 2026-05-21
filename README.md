@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Status](https://img.shields.io/badge/status-research-red.svg)](https://github.com/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17759236.svg)](https://doi.org/10.5281/zenodo.17759236)
+[![DOI](https://zenodo.org/badge/1105565181.svg)](https://doi.org/10.5281/zenodo.20319851)
 
 > **Official implementation of "Reverse Clustering Impact: Geometry-Driven Minimal Parameters for Clustering via Morse Theory"**
 
