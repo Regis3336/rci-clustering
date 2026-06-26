@@ -229,12 +229,12 @@ rci-clustering/
 
 ```bibtex
 @misc{junior2025rci,
-  title        = {Reverse Clustering Impact: Geometry-Driven Minimal Parameters for Clustering via Morse Theory},
-  author       = {Junior, Reinaldo Elias de Souza},
-  year         = {2026},
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.20319869},
-  url          = {https://doi.org/10.5281/zenodo.20319869}
+  title     = {Reverse Clustering Impact: Geometry-Driven Minimal Parameters for Clustering via Morse Theory},
+  author    = {Junior, Reinaldo Elias de Souza},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.20319868},
+  url       = {https://doi.org/10.5281/zenodo.20319868}
 }
 ```
 
