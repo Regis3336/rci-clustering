@@ -214,7 +214,8 @@ rci-clustering/
 │   └── homology.py              # Validation of canonical homology, scale sheaf, nerve moduli, persistence
 ├── theoretical_foundation/
 │   ├── RCI_foundation_v1.pdf    # Archived original foundation
-│   └── RCI_foundation_v2.pdf    # Current revised mathematical framework
+│   ├── RCI_foundation_v2.pdf    # Revised framework with canonical cells, homology, and nerve moduli
+│   └── RCI_foundation_v3.pdf    # Current framework with minimal-metric admissibility and sheafified robustness
 ├── benchmarks/
 │   └── comparison_suite.py      # Benchmark suite
 ├── generate_hero_image.py       # Generates images/hero_comparison.png
